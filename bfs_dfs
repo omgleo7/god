@@ -1,0 +1,64 @@
+import queue 
+ 
+# Graph using adjacency list 
+graph = { 
+    'A': ['B', 'C'], 
+    'B': ['D', 'E'], 
+    'C':['F'], 
+    'D':[], 
+    'E':['F'], 
+    'F':[] 
+} 
+ 
+# array for visited nodes and nodes which are in queue 
+visited = [] 
+queue = [] 
+ 
+def bfs(visited, graph, node): 
+ 
+    # Add the current node to visited and queue 
+    visited.append(node) 
+    queue.append(node) 
+ 
+    # While queue has elements 
+    while queue: 
+ 
+        # Pop the first one and mark as visited 
+        tmp = queue.pop(0) 
+        print(tmp, end="->") 
+ 
+        # Check for the adjacent node 
+        for adjacent in graph[tmp]: 
+            if adjacent not in visited: 
+                visited.append(adjacent) 
+                queue.append(adjacent) 
+ 
+print("BFS------>") 
+bfs(visited, graph, 'A') 
+ 
+ 
+# Graph using adjacency list 
+graph = { 
+    0: [1, 2], 
+    1: [3], 
+    2: [5], 
+    3: [4], 
+    4: [], 
+    5: [] 
+} 
+ 
+# Keep track of visited nodes 
+visited = [] 
+ 
+def dfs(visited, graph, node): 
+    # If node not visited add it to visited 
+    if node not in visited: 
+        visited.append(node) 
+        print(node, end="->") 
+        # Check the adjacent node 
+        for adjacent in graph[node]: 
+            # Call the recursive function dfs 
+            dfs(visited, graph, adjacent) 
+ 
+print("\nDFS----->") 
+dfs(visited, graph, 0) 
